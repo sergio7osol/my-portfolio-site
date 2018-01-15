@@ -4,7 +4,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start1": "NODE_PATH=. node server.js",
     "start": "yarn run node-server",
     "build:dev:client": "node_modules/.bin/webpack -d --watch",
     "build:prod:client": "node_modules/.bin/webpack -p --progress --colors",
@@ -25,7 +24,8 @@
     "bootstrap": "^4.0.0-beta.2",
     "font-awesome": "4.7.0",
     "jquery": "^3.2.1",
-    "jquery.easing": "^1.4.1"
+    "jquery.easing": "^1.4.1",
+    "popper.js": "^1.12.9"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

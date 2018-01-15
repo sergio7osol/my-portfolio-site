@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-
+// TODO: img copy to dist
 const HtmlWebpackPlugin = require("html-webpack-plugin");;
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -11,19 +11,20 @@ const isProduction = nodeEnv === 'production';
 console.log("NODE_ENV:", process.env.NODE_ENV);
 console.log("isProduction:", isProduction);
 
-let DIST_DIR = path.resolve(__dirname, "dist");
+let DIST_DIR = path.resolve(__dirname, "server-root");
 let SRC_DIR = path.resolve(__dirname, "src");
 
 // *.hbs files
 const extractHomeHbs = new HtmlWebpackPlugin({
+    title: "Portfolio of a Frontend Developer",
     template: './home.hbs', // to get the template from - src/...
-    filename: DIST_DIR + '/views/home.hbs', // the file to put the generated HTML into - dist/...
+    filename: DIST_DIR + '/views/home.hbs', // the file to put the generated HTML into - server-root/...
     inject: 'body',
     hash:  false
 });
 const extractProjectsHbs = new HtmlWebpackPlugin({
     template: './projects.hbs', // to get the template from - src/...
-    filename: DIST_DIR + '/views/projects.hbs', // the file to put the generated HTML into - dist/...
+    filename: DIST_DIR + '/views/projects.hbs', // the file to put the generated HTML into - server-root/...
     inject: 'body',
     hash:  false
 });
@@ -101,10 +102,16 @@ const config = {
         ]
     },
     plugins: [
-        extractScss,
         extractHomeHbs,
         extractProjectsHbs,
-        copyPartialsHbs
+        copyPartialsHbs,
+        extractScss,
+        new webpack.ProvidePlugin({
+            '$': "jquery",
+            'jQuery': "jquery",
+            'Tether': 'tether',
+            'Popper': 'popper.js'
+        })
     ]
 }
 

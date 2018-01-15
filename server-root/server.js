@@ -11,13 +11,13 @@ console.log("__basedir: ", __basedir);
 const port = process.env.PORT || 3000;
 let app = express();
 
-let DIST_DIR = path.join(__dirname, "");
+// let DIST_DIR = path.join(__dirname, "");
 
-hbs.registerPartials(DIST_DIR + "/views/partials");
+hbs.registerPartials(__dirname + '/views/partials');
 
-// app.set('base', '/');
+app.set('base', '/');
 // app.set('base', DIST_DIR + "/");
-app.set('views', DIST_DIR + "/views");
+// app.set('views', path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 
 app.use((req, res, next) => {
@@ -34,7 +34,7 @@ app.use((req, res, next) => {
 // app.use((req, res, next) => {
 //     res.render('maintenance.hbs');
 // });
-app.use(express.static(__dirname + '/dist/public'));
+app.use(express.static(__dirname));
 
 hbs.registerHelper('getCurrentYear', () => {
     return new Date().getFullYear();
