@@ -3,6 +3,7 @@ const path = require('path');
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");;
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProduction = nodeEnv === 'production'; 
@@ -10,25 +11,32 @@ const isProduction = nodeEnv === 'production';
 console.log("NODE_ENV:", process.env.NODE_ENV);
 console.log("isProduction:", isProduction);
 
-let DIST_DIR = path.resolve(__dirname, "public");
+let DIST_DIR = path.resolve(__dirname, "dist");
 let SRC_DIR = path.resolve(__dirname, "src");
 
+// *.hbs files
 const extractHomeHbs = new HtmlWebpackPlugin({
     template: './home.hbs', // to get the template from - src/...
-    filename: '../views/home.hbs', // the file to put the generated HTML into - public/...
+    filename: DIST_DIR + '/views/home.hbs', // the file to put the generated HTML into - dist/...
     inject: 'body',
     hash:  false
 });
 const extractProjectsHbs = new HtmlWebpackPlugin({
     template: './projects.hbs', // to get the template from - src/...
-    filename: '../views/projects.hbs', // the file to put the generated HTML into - public/...
+    filename: DIST_DIR + '/views/projects.hbs', // the file to put the generated HTML into - dist/...
     inject: 'body',
     hash:  false
 });
-
 const extractScss = new ExtractTextPlugin({
     filename: "css/[name].css"
- });
+});
+const copyPartialsHbs = new CopyWebpackPlugin([
+    { 
+        context: SRC_DIR,
+        from:  "views/partials/**/*", 
+        to: DIST_DIR 
+    }
+]);
 
 console.log("src: ", SRC_DIR + "/js/index.js");
 
@@ -62,10 +70,10 @@ const config = {
                     {
                         loader: 'file-loader',
                         options: {
-                          name: '[path][name].[ext]',
-                          context: SRC_DIR
+                            name: '[path][name].[ext]',
+                            context: SRC_DIR
                         }  
-                      }, {
+                    }, {
                         loader: 'image-webpack-loader',
                         options: {
                             mozjpeg: {
@@ -89,13 +97,14 @@ const config = {
                         }
                     }
                 ]
-            }
+            } 
         ]
     },
     plugins: [
+        extractScss,
         extractHomeHbs,
         extractProjectsHbs,
-        extractScss
+        copyPartialsHbs
     ]
 }
 

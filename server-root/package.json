@@ -1,0 +1,14 @@
+{
+  "name": "server-root",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "SVO",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "hbs": "^4.0.1"
+  }
+}
