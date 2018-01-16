@@ -4,10 +4,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "yarn run node-server",
+    "start": "yarn run build:dev:client",
     "build:dev:client": "node_modules/.bin/webpack -d --watch",
     "build:prod:client": "node_modules/.bin/webpack -p --progress --colors",
-    "node-server": "nodemon ./dist/server.js"
+    "server": "nodemon ./server-root/server.js"
   },
   "description": "Portfolio of Frontend Developer on Bootstrap",
   "keywords": [
