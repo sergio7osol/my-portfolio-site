@@ -9190,3 +9190,9 @@ ul.social-buttons {
     background-color: #212529; }
     ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons li a:hover {
       background-color: #007bff; }
+
+.inline-list {
+  margin-top: 5px; }
+  @media (min-width: 768px) {
+    .inline-list__item {
+      margin-top: 15px; } }

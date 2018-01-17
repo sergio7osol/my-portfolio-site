@@ -1,0 +1,8 @@
+.inline-list {
+    margin-top: 5px;
+    &__item {
+        @media(min-width: 768px) {
+            margin-top: 15px;
+        }
+    }
+}
