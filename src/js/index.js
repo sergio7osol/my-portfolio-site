@@ -9,7 +9,7 @@ import style from '../scss/main.scss';
 import React from 'react';
 import { render } from 'react-dom';
 
-import { Skills } from './Components/skills-container.jsx';
+import Skills from './Components/skills-container.jsx';
 
 
 render(<Skills/>, document.querySelector(".skills-container-Placeholder"));
