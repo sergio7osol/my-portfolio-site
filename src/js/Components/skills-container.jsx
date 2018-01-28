@@ -2,7 +2,6 @@ import React from "react";
 import Ico_short_long_description from "./ico-short-long-description.jsx";
 
 class Skills_container extends React.Component {
-    
     render(){
         return (
             <div className="row text-center">

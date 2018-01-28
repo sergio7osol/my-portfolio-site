@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Ico_short_long_description extends React.Component {
     render() {
@@ -14,5 +15,11 @@ class Ico_short_long_description extends React.Component {
         )
     }
 }
+
+Ico_short_long_description.propTypes = {
+    name: PropTypes.string,
+    heading: PropTypes.string,
+    text: PropTypes.string
+};
 
 export default Ico_short_long_description;

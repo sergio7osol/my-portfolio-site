@@ -70,33 +70,10 @@ const config = {
                 test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/,
                 use: [
                     {
-                        loader: 'file-loader',
+                        loader: 'url-loader',
                         options: {
-                            name: '[path][name].[ext]',
-                            context: SRC_DIR
-                        }  
-                    }, {
-                        loader: 'image-webpack-loader',
-                        options: {
-                            mozjpeg: {
-                                progressive: true,
-                                quality: 65
-                            },
-                            optipng: {
-                                enabled: false,
-                            },
-                            pngquant: {
-                                quality: '65-90',
-                                speed: 4
-                            },
-                            gifsicle: {
-                                interlaced: false
-                            },
-                            // the webp option will enable WEBP
-                            webp: {
-                                quality: 75
-                            }
-                        }
+                            limit: 8192
+                        } 
                     }
                 ]
             } 
