@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import InputHeader from './input-header.jsx';
 
 class WrExampleComp extends React.Component {
     constructor(props) {
         super();
         this.state = {
-            header: "First title"
+            header: props.initState
         }
     }
     watchInput(event) {
@@ -21,6 +22,10 @@ class WrExampleComp extends React.Component {
             </article>
         );
     }
+};
+
+WrExampleComp.propTypes = {
+    initState: PropTypes.string
 };
 
 export default WrExampleComp;

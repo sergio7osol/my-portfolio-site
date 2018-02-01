@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const InputHeader = (props) => {
     return (
@@ -7,5 +8,9 @@ const InputHeader = (props) => {
         </div>
     )
 }
+
+InputHeader.propTypes = {
+    cb_fn: PropTypes.func
+};
 
 export default InputHeader;
