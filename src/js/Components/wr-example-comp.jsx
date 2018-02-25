@@ -6,7 +6,8 @@ class WrExampleComp extends React.Component {
     constructor(props) {
         super();
         this.state = {
-            header: props.initState
+            header: props.initState,
+            initInputVal: "init"
         }
     }
     watchInput(event) {
@@ -18,7 +19,7 @@ class WrExampleComp extends React.Component {
         return (
             <article>
                 <h3>{this.state.header}</h3>
-                <InputHeader cb_fn={this.watchInput.bind(this)} />
+                <InputHeader cb_fn={this.watchInput.bind(this)} initValue={this.state.initInputVal} />
             </article>
         );
     }

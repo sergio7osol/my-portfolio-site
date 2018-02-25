@@ -1,5 +1,5 @@
 {
-  "title": "Portfolio Frontend Developer",
+  "title": "Portfolio Frontend Developer SVO",
   "name": "svo-portfolio",
   "version": "1.0.0",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "start": "yarn run build:dev:client",
     "build:dev:client": "node_modules/.bin/webpack -d --watch",
     "build:prod:client": "node_modules/.bin/webpack -p --progress --colors",
-    "server": "nodemon ./server-root/server.js"
+    "server": "nodemon ./server/server.js"
   },
   "description": "Portfolio of Frontend Developer on Bootstrap",
   "keywords": [
@@ -28,13 +28,16 @@
     "popper.js": "^1.12.9",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-router": "^4.2.0",
+    "redux": "^3.7.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "browser-sync": "2.18.13",
     "copy-webpack-plugin": "^4.3.1",
     "css-loader": "^0.28.9",

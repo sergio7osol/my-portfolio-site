@@ -57,6 +57,13 @@ app.get("/projects", (req, res) => {
         activeMenuItem: "projects"
     });
 });
+app.get("/redux", (req, res) => {
+    res.render('redux.hbs', {
+        pageTitle: "Redux. SVO",
+        pageMainTitle: "The redux example.",
+        activeMenuItem: "redux"
+    });
+});
 app.get("/bad", (req, res) => {
     res.send({
         errorMessage: "Unable to fullfill the request."

@@ -1,0 +1,11 @@
+.colored-squares {
+    &__item {
+        list-style-type: none;
+        display: inline-block;
+        transition: all 1s ease-in-out;
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+    }
+}

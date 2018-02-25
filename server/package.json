@@ -5,7 +5,8 @@
   "author": "SVO",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js",
+    "start-reload": "nodemon --exec \"yarn start\""
   },
   "dependencies": {
     "express": "^4.16.2",
