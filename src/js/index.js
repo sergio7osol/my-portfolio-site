@@ -6,8 +6,10 @@ import bootstrap from 'bootstrap';
 import style from '../scss/main.scss';
 
 import React from 'react';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { render } from 'react-dom';
+
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import logger from 'redux-logger';
 
 import Skills from './Components/skills-container.jsx';
 // import SwitchFontSize from './Components/switch-font-size.jsx';
@@ -58,7 +60,16 @@ const userReducer = (state =  {
     return state;
 };
 
-const store = createStore(combineReducers({ mathReducer, userReducer }));
+// const myLogger = (store) => { 
+//     return (next) => { 
+//         return (action) => {
+//             console.log("Logged action: ", action);
+//             next(action);
+//         };
+//     }
+// } // middleware structure
+
+const store = createStore(combineReducers({ mathReducer, userReducer }), {}, applyMiddleware(logger));
 
 store.subscribe(() => {
     console.log("Store updated: ", store.getState());
