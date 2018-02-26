@@ -6,7 +6,7 @@ import bootstrap from 'bootstrap';
 import style from '../scss/main.scss';
 
 import React from 'react';
-import { createStore } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { render } from 'react-dom';
 
 import Skills from './Components/skills-container.jsx';
@@ -14,34 +14,51 @@ import Skills from './Components/skills-container.jsx';
 // import WrExampleComp from './Components/wr-example-comp.jsx';
 // import InputBlock from './Components/input-block.jsx';
 
-
-const initState = {  
+const mathReducer = (state =  {  
     result: null,
-    allValues: [],
+    lastValues: [],
     userName: "Sergio"
-};
-
-const reducer = (state = initState, action) => {
+}, action) => {
     switch (action.type) {
         case "ADD": 
             state = {
                 ...state,
                 result: state.result + action.payload,
-                allValues: [...state.allValues, action.payload]
+                lastValues: [...state.lastValues, action.payload]
             }
             break;
         case "SUBTRACT": 
             state = {
                 ...state,
                 result: state.result - action.payload,
-                allValues: [...state.allValues, action.payload]
+                lastValues: [...state.lastValues, action.payload]
+            }
+            break;
+    }
+    return state;
+};
+const userReducer = (state =  {  
+    name: "Sergio",
+    age: 36
+}, action) => {
+    switch (action.type) {
+        case "SET_NAME": 
+            state = {
+                ...state,
+                name: action.payload
+            }
+            break;
+        case "SET_AGE": 
+            state = {
+                ...state,
+                age: action.payload
             }
             break;
     }
     return state;
 };
 
-const store = createStore(reducer);
+const store = createStore(combineReducers({ mathReducer, userReducer }));
 
 store.subscribe(() => {
     console.log("Store updated: ", store.getState());
